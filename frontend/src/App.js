@@ -37,6 +37,7 @@ import EditEventPage from "./pages/EditEvent";
 import NewEventPage, { action as newEventAction } from "./pages/NewEvent";
 import EventDetailPage, {
   loader as EventDetailLoader,
+  action as deleteEventAction,
 } from "./pages/EventDetail";
 import EventNavigationLayout from "./pages/EventNavigationLayout";
 import ErrorPage from "./pages/Error";
@@ -62,7 +63,11 @@ function App() {
               id: "event-detail",
               loader: EventDetailLoader,
               children: [
-                { index: true, element: <EventDetailPage /> },
+                {
+                  index: true,
+                  element: <EventDetailPage />,
+                  action: deleteEventAction,
+                },
                 { path: "edit", element: <EditEventPage /> },
               ],
             },
