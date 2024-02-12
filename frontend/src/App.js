@@ -34,13 +34,16 @@ import HomePage from "./pages/Home";
 
 import EventsPage, { loader as eventsLoader } from "./pages/Events";
 import EditEventPage from "./pages/EditEvent";
-import NewEventPage, { action as newEventAction } from "./pages/NewEvent";
+import NewEventPage from "./pages/NewEvent";
 import EventDetailPage, {
   loader as EventDetailLoader,
   action as deleteEventAction,
 } from "./pages/EventDetail";
 import EventNavigationLayout from "./pages/EventNavigationLayout";
 import ErrorPage from "./pages/Error";
+
+import { action as addEditEventAction } from "./components/EventForm";
+import NewsletterPage, { action as newsletterAction } from "./pages/Newsletter";
 
 function App() {
   const router = createBrowserRouter([
@@ -68,12 +71,25 @@ function App() {
                   element: <EventDetailPage />,
                   action: deleteEventAction,
                 },
-                { path: "edit", element: <EditEventPage /> },
+                {
+                  path: "edit",
+                  element: <EditEventPage />,
+                  action: addEditEventAction,
+                },
               ],
             },
 
-            { path: "new", element: <NewEventPage />, action: newEventAction },
+            {
+              path: "new",
+              element: <NewEventPage />,
+              action: addEditEventAction,
+            },
           ],
+        },
+        {
+          path: "newsletter",
+          element: <NewsletterPage />,
+          action: newsletterAction,
         },
       ],
     },
